@@ -8,3 +8,5 @@
 
 ## When Installing packages, add `-S` to the command to save package into package.json
 i.e `npm install -S react`
+
+### **Capticalize first letter for Component objects.**
