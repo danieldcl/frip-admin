@@ -1,13 +1,21 @@
 import React from 'react';
-import Header from './header/Header';
-import Footer from './footer/Footer';
+import PageLoader from './page_loader/PageLoader';
+import PageContainer from './page_container/PageContainer';
+
 
 export default class App extends React.Component{
   render(){
     return (
       <div>
-        <Header />
-        <Footer />
+
+        {/*<!-- begin #page-loader -->*/}
+        <PageLoader />
+      	{/*<!-- end #page-loader -->*/}
+
+      	{/*<!-- begin #page-container -->*/}
+      	<PageContainer />
+      	{/*<!-- end page container -->*/}
+
       </div>
     );
   }
