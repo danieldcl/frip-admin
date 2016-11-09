@@ -11,10 +11,7 @@ export default () => {
           <div data-scrollbar="true" data-height="100%">
             {/*<!-- begin sidebar nav -->*/}
             <ul class="nav">
-              {/*<!-- begin sidebar minify button -->*/}
-              <li><Link to="/" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></Link></li>
-              {/*<!-- end sidebar minify button -->*/}
-              <li class="nav-header">Navigation</li>
+              <li class="nav-profile">Navigation</li>
               <li class="has-sub">
                 <Link to="/">
                     <i class="fa fa-laptop"></i>
@@ -28,12 +25,12 @@ export default () => {
                   <span>Requests</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><Link to="new/requests">New Requests</Link></li>
-                    <li><Link to="">All Requests</Link></li>
+                    <li><Link to="/new_requests">New Requests</Link></li>
+                    <li><Link to="/requests">All Requests</Link></li>
                 </ul>
               </li>
               <li class="has-sub">
-                <Link to="/new/activity">
+                <Link to="/new_activity">
                     <i class="fa fa-file-o"></i>
                     <span>Add Activity</span>
                   </Link>

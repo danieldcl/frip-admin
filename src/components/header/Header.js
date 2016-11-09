@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Header extends React.Component{
   render(){
@@ -10,14 +11,33 @@ export default class Header extends React.Component{
           <div class="container-fluid">
             {/*<!-- begin mobile sidebar expand / collapse button -->*/}
             <div class="navbar-header">
-              <a href="" class="navbar-brand"><img src="assets/img/frip.png"/></a>
-              <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
+    					<Link href="/" class="navbar-brand"><span><img src=""/></span> Frip Admin</Link>
+    					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+    						<span class="icon-bar"></span>
+    						<span class="icon-bar"></span>
+    						<span class="icon-bar"></span>
+    					</button>
+    					<button type="button" class="navbar-toggle p-0 m-r-5" data-toggle="collapse" data-target="#top-navbar">
+    					    <span class="fa-stack fa-lg text-inverse">
+                                <i class="fa fa-square-o fa-stack-2x m-t-2"></i>
+                                <i class="fa fa-cog fa-stack-1x"></i>
+                            </span>
+    					</button>
+    				</div>
             {/*<!-- end mobile sidebar expand / collapse button -->*/}
+
+
+            {/*<!-- begin navbar-collapse -->*/}
+                    <div class="collapse navbar-collapse pull-left" id="top-navbar">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="www.fripapp.com" target="_blank">
+                                    <i class="fa fa-diamond fa-fw"></i> Client Site
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+    				{/*<!-- end navbar-collapse -->*/}
 
             {/*<!-- begin header navigation right -->*/}
             <ul class="nav navbar-nav navbar-right">

@@ -15,11 +15,12 @@ export default class App extends React.Component{
         <PageLoader />
       	{/*<!-- end #page-loader -->*/}
 
+        {/*<!-- begin #header -->*/}
+        <Header />
+        {/*<!-- end #header -->*/}
+
       	{/*<!-- begin #page-container -->*/}
         <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
-          {/*<!-- begin #header -->*/}
-          <Header />
-          {/*<!-- end #header -->*/}
 
           {/*<!-- begin #sidebar -->*/}
           <SideBar />
@@ -38,7 +39,7 @@ export default class App extends React.Component{
           {/*<!-- end scroll to top btn -->*/}
         </div>
       	{/*<!-- end page container -->*/}
-
+          <Footer />
       </div>
     );
   }
