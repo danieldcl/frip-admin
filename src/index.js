@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+import promise from 'redux-promise';
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+
+ReactDOM.render(
+  <Provider>
+    <Router history={browserHistory} routes={routes}/>
+  </Provider>,
+  document.getElementById('app'));
