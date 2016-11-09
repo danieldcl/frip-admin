@@ -31,7 +31,7 @@ export default class Header extends React.Component{
                     <div class="collapse navbar-collapse pull-left" id="top-navbar">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="www.fripapp.com" target="_blank">
+                                <a href="http://www.fripapp.com" target="_blank">
                                     <i class="fa fa-diamond fa-fw"></i> Client Site
                                 </a>
                             </li>

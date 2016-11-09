@@ -31,7 +31,7 @@ export default class App extends React.Component{
           {/*<!-- end #content -->*/}
 
           {/*<!-- begin theme-panel -->*/}
-          <ThemePanel />
+
           {/*<!-- end theme-panel -->*/}
 
           {/*<!-- begin scroll to top btn -->*/}
