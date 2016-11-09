@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 
 export default () => {
@@ -14,10 +15,10 @@ export default () => {
               {/*<!-- end sidebar minify button -->*/}
               <li class="nav-header">Navigation</li>
               <li class="has-sub">
-                <a href="javascript:;">
+                <Link to="/">
                     <i class="fa fa-laptop"></i>
                     <span>Dashboard</span>
-                  </a>
+                  </Link>
               </li>
               <li class="has-sub">
                 <a href="javascript:;">
@@ -29,7 +30,12 @@ export default () => {
                     <li><a href="">Inbox</a></li>
                 </ul>
               </li>
-
+              <li class="has-sub">
+                <Link to="/new/activity">
+                    <i class="fa fa-file-o"></i>
+                    <span>Add Activity</span>
+                  </Link>
+              </li>
 
               <li class="has-sub">
                 <a href="javascript:;">

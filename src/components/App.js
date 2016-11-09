@@ -1,6 +1,5 @@
 import React from 'react';
 import PageLoader from './page_loader/PageLoader';
-import PageContainer from './page_container/PageContainer';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import SideBar from './sidebar/SideBar';
