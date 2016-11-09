@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 
 export default () => {
+  // use ES6 or function syntax when the component doesn't have to deal with store
     return (
       <div>
         <div id="sidebar" class="sidebar">
@@ -21,13 +22,14 @@ export default () => {
                   </Link>
               </li>
               <li class="has-sub">
-                <Link to="/">
+                <a>
                   <span class="badge pull-right">10</span>
                   <i class="fa fa-inbox"></i>
-                  <span>Email</span>
-                </Link>
+                  <span>Requests</span>
+                </a>
                 <ul class="sub-menu">
-                    <li><Link to="">Inbox</Link></li>
+                    <li><Link to="new/requests">New Requests</Link></li>
+                    <li><Link to="">All Requests</Link></li>
                 </ul>
               </li>
               <li class="has-sub">
