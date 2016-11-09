@@ -11,7 +11,7 @@ export default class Header extends React.Component{
           <div class="container-fluid">
             {/*<!-- begin mobile sidebar expand / collapse button -->*/}
             <div class="navbar-header">
-    					<Link href="/" class="navbar-brand"><span><img src=""/></span> Frip Admin</Link>
+    					<Link href="/" class="navbar-brand"><span><img src="assets/img/frip.png"/></span> Admin</Link>
     					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
     						<span class="icon-bar"></span>
     						<span class="icon-bar"></span>
