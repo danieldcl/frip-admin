@@ -5,16 +5,23 @@ import { fetchVenues } from '../../actions/index';
 
 
 class Venues extends React.Component{
+  constructor(props){
+    super(props);
+    this.state=({venue:[]});
+  }
+
   ManageTable() {
     return window.TableManageDefault.init();
   }
 
-  componentDidMount() {
-    this.ManageTable();
-  }
   componentWillMount(){
     this.props.fetchVenues();
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.ManageTable();
+  }
+
 
   renderVenues(){
     return this.props.venues.map((venue, idx) => {
