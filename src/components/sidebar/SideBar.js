@@ -11,11 +11,17 @@ export default () => {
           <div data-scrollbar="true" data-height="100%">
             {/*<!-- begin sidebar nav -->*/}
             <ul class="nav">
-              <li class="nav-profile">Navigation</li>
+              <li class="nav-header">Navigation</li>
               <li class="has-sub">
                 <Link to="/">
                     <i class="fa fa-laptop"></i>
                     <span>Dashboard</span>
+                  </Link>
+              </li>
+              <li class="has-sub">
+                <Link to="/venues">
+                    <i class="fa fa-cubes"></i>
+                    <span>Venues</span>
                   </Link>
               </li>
               <li class="has-sub">
@@ -30,7 +36,7 @@ export default () => {
                 </ul>
               </li>
               <li class="has-sub">
-                <Link to="/new_activity">
+                <Link to="/venue/new_activity">
                     <i class="fa fa-file-o"></i>
                     <span>Add Activity</span>
                   </Link>

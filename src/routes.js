@@ -6,13 +6,15 @@ import BodyIndex from './components/body_content/body_index';
 import NewActivity from './components/body_content/body_new_activity';
 import NewRequests from './components/body_content/body_new_requests';
 import AllRequests from './components/body_content/body_all_requests';
+import Venues from './components/body_content/body_venues';
 
 export default(
 <Route path="/" component={App}>
   <IndexRoute component = {BodyIndex} />
-  <Route path="/new_activity" component={NewActivity}/>
+  <Route path="/venue/new_activity" component={NewActivity}/>
   <Route path="/new_requests" component={NewRequests}/>
   <Route path="/requests" component={AllRequests}/>
+  <Route path="/venues" component={Venues}/>
 </Route>
 
 );
