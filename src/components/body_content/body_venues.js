@@ -14,8 +14,15 @@ class Venues extends React.Component{
     return window.TableManageDefault.init();
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchVenues();
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.props.venues != nextProps.venues){
+      return true;
+    }
+    return false;
   }
 
   componentDidUpdate(prevProps, prevState) {
