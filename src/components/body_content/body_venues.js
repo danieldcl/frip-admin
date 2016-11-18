@@ -31,9 +31,9 @@ class Venues extends React.Component{
 
 
   renderVenues(){
-    return this.props.venues.map((venue, idx) => {
+    return this.props.venues.map((venue) => {
       return (
-        <tr key={idx}>
+        <tr key={venue.id}>
           <td>
             {venue.venue_name}
           </td>
