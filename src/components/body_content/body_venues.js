@@ -1,47 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
+// import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchVenues } from '../../actions/index';
 
 
+
+
 class Venues extends React.Component{
-  constructor(props){
-    super(props);
-    this.state=({venue:[]});
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   ManageTable() {
     return window.TableManageDefault.init();
   }
 
   componentDidMount(){
-    this.props.fetchVenues();
+      this.props.fetchVenues();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if(this.props.venues != nextProps.venues){
+    if(this.props.venues !== nextProps.venues){
       return true;
     }
     return false;
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.ManageTable();
+      this.ManageTable();
   }
 
 
   renderVenues(){
     return this.props.venues.map((venue) => {
       return (
-        <tr key={venue.id}>
-          <td>
-            {venue.venue_name}
-          </td>
-          <td>
-            {venue.venue_overview}
-          </td>
-        </tr>
+          <tr key={venue.id}>
+            <td>
+              <Link to={`venues/${venue.venue_name}`} >
+                {venue.venue_name}
+              </Link>
+            </td>
+            <td>
+              <Link to={`venues/${venue.venue_name}`} >
+                {venue.venue_overview}
+              </Link>
+            </td>
+          </tr>
       );
     });
   }
@@ -87,6 +92,10 @@ class Venues extends React.Component{
     );
   }
 
+}
+
+Venues.propTypes = {
+  venues: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
 }
 
 function mapStateToProps(state){

@@ -20,7 +20,7 @@ export function fetchVenues(){
 }
 
 export function fetchVenue(venue_name){
-  const url = `${GET_SINGLE_VENUE_URL}venue_name`;
+  const url = `${GET_SINGLE_VENUE_URL}${venue_name}`;
   const request = axios.get(url);
   return {
     type : FETCH_VENUE,
@@ -29,7 +29,7 @@ export function fetchVenue(venue_name){
 }
 
 export function fetchActivity(activity_name){
-  const url = `${GET_SINGLE_ACTIVITY_URL}activity_name`;
+  const url = `${GET_SINGLE_ACTIVITY_URL}${activity_name}`;
   const request = axios.get(url);
   return {
     type : FETCH_ACTIVITY,

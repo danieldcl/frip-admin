@@ -6,6 +6,7 @@ import BodyIndex from './components/body_content/body_index';
 import NewActivity from './components/body_content/body_new_activity';
 import NewRequests from './components/body_content/body_new_requests';
 import AllRequests from './components/body_content/body_all_requests';
+import VenueDetails from './components/body_content/body_venue_detail';
 import Venues from './components/body_content/body_venues';
 
 export default(
@@ -15,6 +16,7 @@ export default(
   <Route path="/new_requests" component={NewRequests}/>
   <Route path="/requests" component={AllRequests}/>
   <Route path="/venues" component={Venues}/>
+  <Route path="/venues/:venue_name" component={VenueDetails}/>
 </Route>
 
 );
