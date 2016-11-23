@@ -6,8 +6,8 @@ import BodyIndex from './components/body_content/body_index';
 import NewActivity from './components/body_content/body_new_activity';
 import NewRequests from './components/body_content/body_new_requests';
 import AllRequests from './components/body_content/body_all_requests';
-import VenueDetails from './components/body_content/body_venue_detail';
-import Venues from './components/body_content/body_venues';
+import VenueDetails from './components/body_content/venues/venue_detail';
+import Venues from './components/body_content/venues/venues_container';
 
 export default(
 <Route path="/" component={App}>

@@ -1,60 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-// import $ from 'jquery';
-import { connect } from 'react-redux';
-import { fetchVenues } from '../../actions/index';
 
+export default (props) => {
 
-
-
-class Venues extends React.Component{
-  // constructor(props){
-  //   super(props);
-  // }
-
-  ManageTable() {
-    return window.TableManageDefault.init();
-  }
-
-  componentDidMount(){
-      this.props.fetchVenues();
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if(this.props.venues !== nextProps.venues){
-      return true;
-    }
-    return false;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-      this.ManageTable();
-  }
-
-
-  renderVenues(){
-    return this.props.venues.map((venue) => {
-      return (
-          <tr key={venue.id}>
-            <td>
-              <Link to={`venues/${venue.venue_name}`} >
-                {venue.venue_name}
-              </Link>
-            </td>
-            <td>
-              <Link to={`venues/${venue.venue_name}`} >
-                {venue.venue_overview}
-              </Link>
-            </td>
-          </tr>
-      );
-    });
-  }
-
-
-  render(){
     return (
-
       <div id="content" class="content">
   			<h1 class="page-header">Venues</h1>
   			<div class="row">
@@ -74,11 +23,10 @@ class Venues extends React.Component{
                                       <tr>
                                           <th>Venue Name</th>
                                           <th>Overview</th>
-
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      {this.renderVenues()}
+                                    {renderVenues(props.venues)}
                                   </tbody>
                               </table>
                           </div>
@@ -90,18 +38,29 @@ class Venues extends React.Component{
   		</div>
 
     );
-  }
+
 
 }
 
-Venues.propTypes = {
-  venues: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+function renderVenues(venues){
+  return venues.map((venue) => {
+    return (
+        <tr key={venue.id}>
+          <td>
+            <Link to={`venues/${venue.venue_name}`} >
+              {venue.venue_name}
+            </Link>
+          </td>
+          <td>
+            <Link to={`venues/${venue.venue_name}`} >
+              {venue.venue_overview}
+            </Link>
+          </td>
+        </tr>
+    );
+  });
 }
 
-function mapStateToProps(state){
-  return {
-    venues: state.venues.all
-  };
-}
-
-export default connect(mapStateToProps, { fetchVenues })(Venues);
+// function manageTable() {
+//   return window.TableManageDefault.init();
+// }

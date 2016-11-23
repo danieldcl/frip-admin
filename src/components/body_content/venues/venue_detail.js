@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchVenue } from '../../actions/index';
+import { fetchVenue } from '../../../actions/index';
 import { connect } from 'react-redux';
 
 
