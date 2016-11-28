@@ -15,6 +15,10 @@ var handleDataTableDefault = function() {
     }
 };
 
+var destroyTable = function(){
+	$('#data-table').dataTable().fnDestroy();
+};
+
 var TableManageDefault = function () {
 	"use strict";
     return {
