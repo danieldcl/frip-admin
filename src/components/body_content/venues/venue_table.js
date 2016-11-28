@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default (props) => {
-
+export default function VenuesTable(props){
     return (
       <table id="data-table" class="table table-striped table-bordered">
           <thead>
@@ -15,11 +14,11 @@ export default (props) => {
             {renderVenues(props.venues)}
           </tbody>
       </table>
-
-
     );
+}
 
-
+VenuesTable.propTypes ={
+  venues : React.PropTypes.array
 }
 
 function renderVenues(venues){
@@ -40,7 +39,3 @@ function renderVenues(venues){
     );
   });
 }
-
-// function manageTable() {
-//   return window.TableManageDefault.init();
-// }

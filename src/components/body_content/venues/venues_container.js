@@ -68,10 +68,6 @@ class Venues extends React.Component{
 
 }
 
-Venues.propTypes = {
-  venues: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
-}
-
 function mapStateToProps(state){
   return {
     venues: state.venues.all
