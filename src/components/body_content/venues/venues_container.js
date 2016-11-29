@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchVenues } from '../../../actions/index';
-import VenueTable from './venue_table';
+import VenuesTable from './venue_table';
 
 
 class Venues extends React.Component{
@@ -33,7 +33,7 @@ class Venues extends React.Component{
                             </div>
                             <div class="panel-body">
 
-                              <VenueTable venues={this.props.venues} />
+                              <VenuesTable venues={this.props.venues} />
 
                             </div>
                         </div>
@@ -47,6 +47,10 @@ class Venues extends React.Component{
     return (<div id="content" class="content">Loading data ...</div>);
   }
 
+}
+
+Venues.propTypes = {
+  venues: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
 }
 
 function mapStateToProps(state){

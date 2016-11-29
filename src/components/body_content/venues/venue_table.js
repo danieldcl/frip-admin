@@ -4,12 +4,6 @@ import { Link } from 'react-router';
 
 
 export default class VenuesTable extends React.Component {
-    constructor(props){
-      super(props);
-      this.rows = this.props.venues;
-      this.state = {};
-    }
-
     render(){
       return (
         <table>
@@ -27,8 +21,8 @@ export default class VenuesTable extends React.Component {
   }
 }
 
-VenuesTable.propTypes ={
-  venues : React.PropTypes.array
+VenuesTable.propTypes = {
+  venues: React.PropTypes.array
 }
 
 function renderVenues(venues){
