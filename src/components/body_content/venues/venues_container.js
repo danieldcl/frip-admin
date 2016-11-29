@@ -10,30 +10,10 @@ class Venues extends React.Component{
   constructor(props){
     super(props);
   }
-  componentDidMount() {
-    if(this.props.venues.length){
-      this.manageTable();
-    }
 
-  }
   componentWillMount() {
     this.props.fetchVenues();
   }
-
-  manageTable() {
-    return window.TableManageDefault.init();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // console.log(ReactDOM.findDOMNode(this));
-    // console.log(window);
-
-    window.destroyTable();
-      this.manageTable();
-
-  }
-
-
 
   render(){
     if(this.props.venues){
