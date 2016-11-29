@@ -7,7 +7,7 @@ export const FETCH_ACTIVITY = 'FETCH_ACTIVITY';
 
 const ROOT_URL = 'http://frip-api.herokuapp.com/api/venues';
 const ROOT_URL_LOCALHOST = 'http://localhost:8001/api/venues';
-const GET_SINGLE_VENUE_URL = 'http://localhost:8001/api/venue?venue=';
+const GET_SINGLE_VENUE_URL = 'http://localhost:8001/api/venue?id=';
 const GET_SINGLE_ACTIVITY_URL = 'http://localhost:8001/api/trip?trip=';
 
 // get/post data this way
@@ -19,8 +19,8 @@ export function fetchVenues(){
   };
 }
 
-export function fetchVenue(venue_name){
-  const url = `${GET_SINGLE_VENUE_URL}${venue_name}`;
+export function fetchVenue(id){
+  const url = `${GET_SINGLE_VENUE_URL}${id}`;
   const request = axios.get(url);
   return {
     type : FETCH_VENUE,

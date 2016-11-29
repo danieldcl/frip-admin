@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class VenueDetails extends React.Component{
 
   componentDidMount() {
-    this.props.fetchVenue(this.props.params.venue_name);
+    this.props.fetchVenue(this.props.params.id);
   }
 
   render(){

@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 export default class VenuesTable extends React.Component {
     render(){
       return (
-        <table>
+        <table id="data-table" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Venue Name</th>
@@ -30,12 +30,12 @@ function renderVenues(venues){
     return (
         <tr key={venue.id}>
           <td>
-            <Link to={`venues/${venue.venue_name}`} >
+            <Link to={`venues/${venue.id}`} >
               {venue.venue_name}
             </Link>
           </td>
           <td>
-            <Link to={`venues/${venue.venue_name}`} >
+            <Link to={`venues/${venue.id}`} >
               {venue.venue_overview}
             </Link>
           </td>

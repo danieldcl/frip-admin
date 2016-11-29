@@ -16,7 +16,7 @@ export default(
   <Route path="/new_requests" component={NewRequests}/>
   <Route path="/requests" component={AllRequests}/>
   <Route path="/venues" component={Venues}/>
-  <Route path="/venues/:venue_name" component={VenueDetails}/>
+  <Route path="/venues/:id" component={VenueDetails}/>
 </Route>
 
 );

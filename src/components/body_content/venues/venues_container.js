@@ -15,6 +15,17 @@ class Venues extends React.Component{
     this.props.fetchVenues();
   }
 
+  componentDidMount() {
+    if(this.props.venues.length){
+      window.TableManageDefault.init();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    window.destroyTable();
+    window.TableManageDefault.init();
+  }
+
   render(){
     if(this.props.venues){
       return (
