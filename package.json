@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-1": "^6.1.18",
+    "fixed-data-table": "^0.6.3",
     "lodash": "^3.10.1",
     "promise": "^7.1.1",
     "react": "^0.14.3",

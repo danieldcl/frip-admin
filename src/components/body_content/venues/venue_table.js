@@ -1,20 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default function VenuesTable(props){
-    return (
-      <table id="data-table" class="table table-striped table-bordered">
-          <thead>
-              <tr>
-                  <th>Venue Name</th>
-                  <th>Overview</th>
-              </tr>
-          </thead>
-          <tbody>
-            {renderVenues(props.venues)}
-          </tbody>
-      </table>
-    );
+
+
+export default class VenuesTable extends React.Component {
+    constructor(props){
+      super(props);
+      this.rows = this.props.venues;
+      this.state = {};
+    }
+
+    render(){
+      return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Venue Name</th>
+                    <th>Overview</th>
+                </tr>
+            </thead>
+            <tbody>
+              {renderVenues(this.props.venues)}
+            </tbody>
+        </table>
+      );
+  }
 }
 
 VenuesTable.propTypes ={

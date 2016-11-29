@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchVenues } from '../../../actions/index';
@@ -33,6 +32,8 @@ class Venues extends React.Component{
       this.manageTable();
 
   }
+
+
 
   render(){
     if(this.props.venues){
