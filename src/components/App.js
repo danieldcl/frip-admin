@@ -1,7 +1,7 @@
 import React from 'react';
 import PageLoader from './page_loader/PageLoader';
 import Header from './header/Header';
-import Footer from './footer/Footer';
+
 import SideBar from './sidebar/SideBar';
 import ThemePanel from './theme_panel/ThemePanel';
 
@@ -39,7 +39,7 @@ export default class App extends React.Component{
           {/*<!-- end scroll to top btn -->*/}
         </div>
       	{/*<!-- end page container -->*/}
-          <Footer />
+
       </div>
     );
   }

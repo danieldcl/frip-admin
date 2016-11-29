@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+import Footer from '../footer/Footer';
 
 export default () => {
   // use ES6 or function syntax when the component doesn't have to deal with store
@@ -68,6 +68,9 @@ export default () => {
                   {/*<!-- begin sidebar minify button -->*/}
               <li><Link to="/" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></Link></li>
                   {/*<!-- end sidebar minify button -->*/}
+                  <li class="has-sub">
+                    <Footer />
+                  </li>
             </ul>
             {/*<!-- end sidebar nav -->*/}
           </div>
