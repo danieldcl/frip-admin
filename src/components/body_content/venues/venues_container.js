@@ -4,6 +4,7 @@ import $ from 'jquery';
 import { connect } from 'react-redux';
 import { fetchVenues } from '../../../actions/index';
 import VenuesTable from './venue_table';
+import shallowCompare from 'react-addons-shallow-compare';
 
 
 class Venues extends React.Component{
@@ -19,6 +20,10 @@ class Venues extends React.Component{
     if(this.props.venues.length){
       window.TableManageDefault.init();
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentDidUpdate(prevProps, prevState) {
