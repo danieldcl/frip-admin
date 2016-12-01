@@ -18,10 +18,11 @@
   	<link href="/assets/css/animate.min.css" rel="stylesheet" />
   	<link href="/assets/css/style.min.css" rel="stylesheet" />
   	<link href="/assets/css/style-responsive.min.css" rel="stylesheet" />
-
+    <link href="/assets/css/theme/default.css" rel="stylesheet" id="theme" />
   	<!-- ================== END BASE CSS STYLE ================== -->
 
   	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link href="/assets/plugins/parsley/src/parsley.css" rel="stylesheet" />
   	<link href="/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
   	<link href="/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
   	<!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -57,7 +58,7 @@
   <script src="/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
   <!-- this script is making the pagination -->
-
+  <script src="/assets/plugins/parsley/dist/parsley.js"></script>
   <script src="/assets/js/apps.min.js"></script>
   <script src="/assets/js/table-manage-default.demo.js"></script>
   <!-- ================== END PAGE LEVEL JS ================== -->
@@ -65,7 +66,6 @@
   <script type="text/javascript">
 		$(document).ready(function() {
 			App.init();
-      // TableManageDefault.init();
 		});
 	</script>
 
