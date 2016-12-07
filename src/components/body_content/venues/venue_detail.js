@@ -24,7 +24,16 @@ class VenueDetails extends React.Component{
 
   onChange(e){
     const key = e.target.name;
-    var new_venue = update(this.state.venue, {[key]: {$set:e.target.value}});
+    var new_venue = '';
+    if (e.target.type=='checkbox'){
+      if (e.target.checked){
+        var new_venue = update(this.state.venue, {[key]:{$set: 'Yes'}});
+      }else{
+        var new_venue = update(this.state.venue, {[key]:{$set: 'No'}});
+      }
+    }else{
+      var new_venue = update(this.state.venue, {[key]: {$set:e.target.value}});
+    }
     this.setState({venue:new_venue});
   }
 
@@ -77,7 +86,7 @@ class VenueDetails extends React.Component{
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Hours*: </label>
 									<div class="col-md-10 col-sm-10">
-                    <input class="form-control" type="text" onChange={this.onChange} name='venue_hours'  data-type="text" value={venue.venue_hours} data-parsley-required="true" />
+                    <textarea class="form-control" style={style} onChange={this.onChange} name='venue_hours'  data-type="text" value={venue.venue_hours} data-parsley-required="true"></textarea>
                   </div>
 								</div>
                 <div class="form-group">
@@ -116,12 +125,24 @@ class VenueDetails extends React.Component{
 										<input class="form-control" type="text" onChange={this.onChange} name='venue_img'  data-type="text" value={venue.venue_img} data-parsley-required="true" />
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-md-2 col-sm-2">Regular Expression :</label>
+                <div class="form-group">
+									<label class="control-label col-md-2 col-sm-2">Special Programs :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control parsley-validated" type="text" id="data-regexp" data-parsley-pattern="#[A-Fa-f0-9]{6}" placeholder="hexa color code" data-required="true" />
+										<textarea class="form-control parsley-validated" name='venue_special_programs' value={venue.venue_special_programs} onChange={this.onChange}></textarea>
 									</div>
 								</div>
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-sm-2">Accessibles :</label>
+                  <div class="col-md-10 col-sm-10">
+                    <label class="checkbox-inline">
+                      <input name='venue_cafeteria' type="checkbox" value={venue.venue_cafeteria} onChange={this.onChange} checked={venue.venue_cafeteria=='Yes'? true:false}/>cafeteria
+                    </label>
+                    <label class="checkbox-inline">
+                      <input name='venue_wheelchair_accessible' type="checkbox" value={venue.venue_wheelchair_accessible} onChange={this.onChange} checked={venue.venue_wheelchair_accessible=='Yes'? true:false}/>Wheelchair
+                    </label>
+                  </div>
+                </div>
+
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"></label>
 									<div class="col-md-10 col-sm-10">
@@ -142,9 +163,6 @@ class VenueDetails extends React.Component{
 
 }
 
-VenueDetails.propTypes = {
-  venue: React.PropTypes.object.isRequired
-}
 
 function mapStateToProps(state){
   return {
