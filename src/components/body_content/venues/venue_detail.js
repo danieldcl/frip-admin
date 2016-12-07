@@ -10,7 +10,8 @@ class VenueDetails extends React.Component{
     this.state = {
       venue:''
     };
-    this.onChange = this.onChange.bind(this);
+    this.venueOnChange = this.venueOnChange.bind(this);
+    this.tripOnChange = this.tripOnChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -22,18 +23,38 @@ class VenueDetails extends React.Component{
     this.setState({venue:nextProps.venue});
   }
 
-  onChange(e){
-    const key = e.target.name;
+  venueOnChange(e){
+    const name = e.target.name;
     var new_venue = '';
     if (e.target.type=='checkbox'){
       if (e.target.checked){
-        var new_venue = update(this.state.venue, {[key]:{$set: 'Yes'}});
+        new_venue = update(this.state.venue, {[name]:{$set: 'Yes'}});
       }else{
-        var new_venue = update(this.state.venue, {[key]:{$set: 'No'}});
+        new_venue = update(this.state.venue, {[name]:{$set: 'No'}});
       }
     }else{
-      var new_venue = update(this.state.venue, {[key]: {$set:e.target.value}});
+      new_venue = update(this.state.venue, {[name]: {$set:e.target.value}});
     }
+    this.setState({venue:new_venue});
+  }
+
+  tripOnChange(e){
+    const name = e.target.name;
+    const id = e.target.id;
+    var new_trip = '';
+    if (e.target.type=='checkbox'){
+      if (e.target.checked){
+        new_trip = update(this.state.venue.trip[id], {[name]:{$set: 'Yes'}});
+      }else{
+        new_trip = update(this.state.venue.trip[id], {[name]:{$set: 'No'}});
+      }
+    }else{
+      new_trip = update(this.state.venue.trip[id], {[name]: {$set:e.target.value}});
+    }
+
+    var new_trips = update(this.state.venue.trip, {[id]:{$set:new_trip}});
+    var new_venue = update(this.state.venue, {trip:{$set:new_trips}});
+
     this.setState({venue:new_venue});
   }
 
@@ -50,6 +71,25 @@ class VenueDetails extends React.Component{
     const style = {
       height:'150px'
     };
+
+    var renderTrips = venue.trip.map(
+      (t,key) => {
+      return (
+        <div key={key}>
+          <a data-toggle="collapse" data-target={'#trip'+key}>{t.trip_title}</a>
+          <div id={'trip'+key} class="collapse">
+            <div class="form-group">
+              <label class="control-label col-md-2 col-sm-2">Overview*:</label>
+              <div class="col-md-10 col-sm-10">
+                <textarea class="form-control" style={style} id={key} name="trip_overview" value={t.trip_overview} onChange={this.tripOnChange} data-parsley-required="true"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    });
+
     return (
       <div id="content" class="content">
 
@@ -70,79 +110,85 @@ class VenueDetails extends React.Component{
                             <h4 class="panel-title">Venue Data</h4>
                         </div>
                         <div class="panel-body panel-form">
+
               <form class="form-horizontal form-bordered" data-parsley-validate="true" onSubmit={this.onSubmit}>
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Venue Name* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_name'  data-type="text" value={venue.venue_name} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_name'  data-type="text" value={venue.venue_name} data-parsley-required="true" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Overview* :</label>
 									<div class="col-md-10 col-sm-10">
-										<textarea class="form-control" style={style} name="venue_overview" value={venue.venue_overview} onChange={this.onChange} data-parsley-required="true"></textarea>
+										<textarea class="form-control" style={style} name="venue_overview" value={venue.venue_overview} onChange={this.venueOnChange} data-parsley-required="true"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Hours*: </label>
 									<div class="col-md-10 col-sm-10">
-                    <textarea class="form-control" style={style} onChange={this.onChange} name='venue_hours'  data-type="text" value={venue.venue_hours} data-parsley-required="true"></textarea>
+                    <textarea class="form-control" style={style} onChange={this.venueOnChange} name='venue_hours'  data-type="text" value={venue.venue_hours} data-parsley-required="true"></textarea>
                   </div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"> email* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_email'  data-type="text" value={venue.venue_email} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_email'  data-type="text" value={venue.venue_email} data-parsley-required="true" />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"> phone* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_phone'  data-type="text" value={venue.venue_phone} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_phone'  data-type="text" value={venue.venue_phone} data-parsley-required="true" />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"> price* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_price'  data-type="text" value={venue.venue_price} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_price'  data-type="text" value={venue.venue_price} data-parsley-required="true" />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Adult price* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_price_adult'  data-type="text" value={venue.venue_price_adult} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_price_adult'  data-type="text" value={venue.venue_price_adult} data-parsley-required="true" />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"> location* :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_location'  data-type="text" value={venue.venue_location} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_location'  data-type="text" value={venue.venue_location} data-parsley-required="true" />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Image :</label>
 									<div class="col-md-10 col-sm-10">
-										<input class="form-control" type="text" onChange={this.onChange} name='venue_img'  data-type="text" value={venue.venue_img} data-parsley-required="true" />
+										<input class="form-control" type="text" onChange={this.venueOnChange} name='venue_img'  data-type="text" value={venue.venue_img} />
 									</div>
 								</div>
                 <div class="form-group">
 									<label class="control-label col-md-2 col-sm-2">Special Programs :</label>
 									<div class="col-md-10 col-sm-10">
-										<textarea class="form-control parsley-validated" name='venue_special_programs' value={venue.venue_special_programs} onChange={this.onChange}></textarea>
+										<textarea class="form-control parsley-validated" name='venue_special_programs' value={venue.venue_special_programs} onChange={this.venueOnChange}></textarea>
 									</div>
 								</div>
                 <div class="form-group">
                   <label class="control-label col-md-2 col-sm-2">Accessibles :</label>
                   <div class="col-md-10 col-sm-10">
                     <label class="checkbox-inline">
-                      <input name='venue_cafeteria' type="checkbox" value={venue.venue_cafeteria} onChange={this.onChange} checked={venue.venue_cafeteria=='Yes'? true:false}/>cafeteria
+                      <input name='venue_cafeteria' type="checkbox" value={venue.venue_cafeteria} onChange={this.venueOnChange} checked={venue.venue_cafeteria=='Yes'? true:false}/>cafeteria
                     </label>
                     <label class="checkbox-inline">
-                      <input name='venue_wheelchair_accessible' type="checkbox" value={venue.venue_wheelchair_accessible} onChange={this.onChange} checked={venue.venue_wheelchair_accessible=='Yes'? true:false}/>Wheelchair
+                      <input name='venue_wheelchair_accessible' type="checkbox" value={venue.venue_wheelchair_accessible} onChange={this.venueOnChange} checked={venue.venue_wheelchair_accessible=='Yes'? true:false}/>Wheelchair
                     </label>
                   </div>
                 </div>
-
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-sm-2">Trips:</label>
+                  <div class="col-md-10 col-sm-10">
+                    {renderTrips}
+                  </div>
+                </div>
 								<div class="form-group">
 									<label class="control-label col-md-2 col-sm-2"></label>
 									<div class="col-md-10 col-sm-10">
