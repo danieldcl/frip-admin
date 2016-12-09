@@ -8,9 +8,6 @@ import shallowCompare from 'react-addons-shallow-compare';
 
 
 class Venues extends React.Component{
-  constructor(props){
-    super(props);
-  }
 
   componentWillMount() {
     this.props.fetchVenues();

@@ -30,12 +30,12 @@ function renderVenues(venues){
     return (
         <tr key={venue.id}>
           <td>
-            <Link to={`venues/${venue.id}`} >
+            <Link to={`/venues/${venue.id}`} >
               {venue.venue_name}
             </Link>
           </td>
           <td>
-            <Link to={`venues/${venue.id}`} >
+            <Link to={`/venues/${venue.id}`} >
               {venue.venue_overview}
             </Link>
           </td>
