@@ -13,6 +13,8 @@ class VenueDetails extends React.Component{
     this.venueOnChange = this.venueOnChange.bind(this);
     this.tripOnChange = this.tripOnChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.addEmptyTrip = this.addEmptyTrip.bind(this);
+
   }
 
   componentWillMount() {
@@ -58,15 +60,34 @@ class VenueDetails extends React.Component{
     this.setState({venue:new_venue});
   }
 
-  onSubmit(e){
-    console.log(this.state.venue);
-    console.log(this.props.route);
-    e.preventDefault();
+  addEmptyTrip(){
+    var newTrip = {
+      trip_title:'N/A',
+      trip_img:'N/A',
+      trip_overview:'N/A',
+      trip_price:'N/A',
+      trip_resources:'N/A',
+      trip_size:0,
+      trip_staff_led:'N/A',
+      trip_student_adult_ratio:'N/A',
+      trip_venue:'N/A',
+    };
+
+    var new_venue = update(this.state.venue, {trip:{$set:this.state.venue.trip.concat(newTrip)}});
+
+    this.setState({venue: new_venue});
   }
 
-  renderTrips(trips){
-    return
+  popTrip(tripIndex){
+      this.state.venue.trip.splice(tripIndex,1);
+      this.setState({venue:this.state.venue});
   }
+
+  onSubmit(e){
+    e.preventDefault();
+    console.log(this.state.venue);
+  }
+
 
   render(){
     if(this.state.venue){
@@ -174,8 +195,11 @@ class VenueDetails extends React.Component{
                     <div class="form-group">
                       <label class="control-label col-md-2 col-sm-2">{venue.trip.length} Trips:</label>
 
-                        <TripList trips={venue.trip} style={style} tripOnChange={this.tripOnChange} />
+                        <TripList trips={venue.trip} style={style} tripOnChange={this.tripOnChange} addEmptyTrip={this.addEmptyTrip} popTrip={this.popTrip.bind(this)}/>
 
+                      <div class="col-md-10 col-sm-10 col-sm-offset-2">
+                        <button type="button" onClick={this.addEmptyTrip}>Add New Trip</button>
+                      </div>
                     </div>
     								<div class="form-group">
     									<label class="control-label col-md-2 col-sm-2"></label>

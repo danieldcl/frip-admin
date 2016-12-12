@@ -3,13 +3,19 @@ import React from 'react';
 export default class TripList extends React.Component {
 
   render(){
-
+    const style={
+      float:'right',
+      marginRight:'0px',
+    };
     if(this.props.trips.length){
       var triplist = this.props.trips.map(
           (trip,key) => {
           return (
             <div key={key}>
-              <a data-toggle="collapse" data-target={'#trip'+key}>[{key+1}] {trip.trip_title}</a>
+              <div>
+                <a class="btn btn-xs" type="button" data-toggle="collapse" data-target={'#trip'+key}>[{key+1}] {trip.trip_title}</a>
+                <a class="btn btn-xs" style={style} type="button" onClick={this.props.popTrip.bind(this,key)}>Remove {key+1}</a>
+              </div>
               <div id={'trip'+key} class="collapse">
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3">Title:</label>
@@ -73,6 +79,8 @@ export default class TripList extends React.Component {
           );
 
         });
+
+
 
         return (
           <div class="col-md-10 col-sm-10">
