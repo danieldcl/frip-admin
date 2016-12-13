@@ -8,6 +8,9 @@ import shallowCompare from 'react-addons-shallow-compare';
 
 
 class Venues extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
   componentWillMount() {
     this.props.fetchVenues();
@@ -26,6 +29,18 @@ class Venues extends React.Component{
   componentDidUpdate(prevProps, prevState) {
     window.destroyTable();
     window.TableManageDefault.init();
+    if(localStorage.page){
+      window.getSearch(localStorage.searchBoxValue);
+      window.changeTableLen(Number(localStorage.len));
+      window.jumpToPage(Number(localStorage.page));
+    }
+  }
+  componentWillUnmount() {
+    const info = window.tableInfo();
+    localStorage.setItem('page',info.page);
+    localStorage.setItem('len',info.length);
+    localStorage.setItem('searchBoxValue', window.getSearchBoxValue());
+
   }
 
   render(){

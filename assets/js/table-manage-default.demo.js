@@ -9,7 +9,7 @@ var handleDataTableDefault = function() {
 	"use strict";
 
     if ($('#data-table').length !== 0) {
-        $('#data-table').DataTable({
+        var datatable = $('#data-table').DataTable({
             responsive: true
         });
     }
@@ -18,6 +18,27 @@ var handleDataTableDefault = function() {
 var destroyTable = function() {
 	$("#data-table").dataTable().fnDestroy();
 };
+
+var tableInfo = function(){
+	return $("#data-table").DataTable().page.info();
+};
+
+var jumpToPage = function(pageNum){
+	$("#data-table").DataTable().page(pageNum).draw('page');
+}
+
+var changeTableLen = function(l){
+	$("#data-table").DataTable().page.len(l).draw();
+}
+
+var getSearchBoxValue = function(){
+	return $('.dataTables_filter input').val();
+}
+
+var getSearch = function(key){
+	destroyTable();
+	$("#data-table").DataTable({oSearch: {"sSearch": key}});
+}
 
 var TableManageDefault = function () {
 	"use strict";

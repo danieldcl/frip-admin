@@ -25,6 +25,12 @@ export default () => {
                   </Link>
               </li>
               <li class="has-sub">
+                <Link to="/venue/new_venue">
+                  <i class="fa fa-file-o"></i>
+                  <span>Add New Venue</span>
+                </Link>
+              </li>
+              <li class="has-sub">
                 <a>
                   <span class="badge pull-right">10</span>
                   <i class="fa fa-inbox"></i>
@@ -34,12 +40,6 @@ export default () => {
                     <li><Link to="/new_requests">New Requests</Link></li>
                     <li><Link to="/requests">All Requests</Link></li>
                 </ul>
-              </li>
-              <li class="has-sub">
-                <Link to="/venue/new_activity">
-                    <i class="fa fa-file-o"></i>
-                    <span>Add Activity</span>
-                  </Link>
               </li>
 
               <li class="has-sub">
