@@ -9,6 +9,7 @@ const ROOT_URL = 'http://frip-api.herokuapp.com/api/venues';
 const ROOT_URL_LOCALHOST = 'http://localhost:8001/api/venues';
 const GET_SINGLE_VENUE_URL = 'http://localhost:8001/api/venue?id=';
 const GET_SINGLE_ACTIVITY_URL = 'http://localhost:8001/api/trip?trip=';
+const LOGIN_URL = 'http://localhost:8001/api/'
 
 // get/post data this way
 export function fetchVenues(){
@@ -35,4 +36,46 @@ export function fetchActivity(activity_name){
     type : FETCH_ACTIVITY,
     payload : request
   }
+}
+
+module.exports = {
+    login: function(username, pass, cb) {
+        if (localStorage.token) {
+            if (cb) cb(true)
+            return
+        }
+        this.getToken(username, pass, (res) => {
+            if (res.authenticated) {
+                localStorage.token = res.token
+                if (cb) cb(true)
+            } else {
+                if (cb) cb(false)
+            }
+        })
+    },
+
+    logout: function() {
+        delete localStorage.token
+    },
+
+    loggedIn: function() {
+        return !!localStorage.token
+    },
+
+    getToken: function(username, pass, cb) {
+        $.ajax({
+            type: 'POST',
+            url: LOGIN_URL,
+            data: {
+                username: username,
+                password: pass
+            },
+            success: function(res){
+                cb({
+                    authenticated: true,
+                    token: res.token
+                })
+            }
+        })
+    },
 }
