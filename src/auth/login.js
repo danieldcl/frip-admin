@@ -2,25 +2,34 @@ import React from 'react';
 import auth from '../actions/index';
 import { Link } from 'react-router';
 
-module.exports = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.object.isRequired
-    },
+export default class Login extends React.Component{
+    constructor(props){
+      super(props);
+      this.state = {email:'',password:''};
+    }
 
-    handleSubmit: function(e) {
-        e.preventDefault()
+    handleSubmit(e){
+        e.preventDefault();
+        var email = this.state.email;
+        var password = this.state.password;
+        console.log(email,password);
 
-        var username = this.refs.username.value
-        var pass = this.refs.pass.value
-
-        auth.login(username, pass, (loggedIn) => {
+        auth.login(email, password, (loggedIn) => {
             if (loggedIn) {
                 this.context.router.replace('/')
             }
-        })
-    },
+        });
+    }
 
-    render: function() {
+    handleEmailChange(e){
+      this.setState({email: e.target.value});
+    }
+
+    handlePasswordChange(e) {
+       this.setState({password: e.target.value});
+     }
+
+    render() {
         return (
           <div id="page-container" class="fade">
 
@@ -31,7 +40,7 @@ module.exports = React.createClass({
                       <img src="assets/img/bg-4.jpg" data-id="login-cover-image" alt="" />
                   </div>
                   <div class="news-caption">
-                      <h4 class="caption-title"><i class="fa fa-diamond text-success"></i> Announcing the Color Admin app</h4>
+                      <h4 class="caption-title"><i class="fa fa-diamond text-success"></i> Announcing the Frip App Admin</h4>
                       <p>
                           Download the Color Admin app for iPhone®, iPad®, and Android™.
                       </p>
@@ -53,12 +62,12 @@ module.exports = React.createClass({
 
 
                   <div class="login-content">
-                      <form class="margin-bottom-0" onSubmit={this.handleSubmit}>
+                      <form class="margin-bottom-0" onSubmit={this.handleSubmit.bind(this)}>
                           <div class="form-group m-b-15">
-                              <input type="text" class="form-control input-lg" placeholder="Email Address" />
+                              <input type="text" class="form-control input-lg" placeholder="Email Address" onChange={this.handleEmailChange.bind(this)}/>
                           </div>
                           <div class="form-group m-b-15">
-                              <input type="password" class="form-control input-lg" placeholder="Password" />
+                              <input type="password" class="form-control input-lg" placeholder="Password" onChange={this.handlePasswordChange.bind(this)}/>
                           </div>
                           <div class="checkbox m-b-30">
                               <label>
@@ -80,6 +89,6 @@ module.exports = React.createClass({
               </div>
         </div>
 	     </div>
-        )
+      )
     }
-})
+}
