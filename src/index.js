@@ -19,12 +19,12 @@ import Venues from './components/body_content/venues/venues_list';
 import auth from './actions/index';
 
 function requireAuth(nextState, replace) {
-    if (!auth.loggedIn()) {
-        replace({
-            pathname:'/login',
-            state: {nextPathname: '/'}
-        })
-    }
+    // if (!auth.loggedIn()) {
+        // replace({
+        //     pathname:'/login',
+        //     state: {nextPathname: '/'}
+        // })
+    // }
 }
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -36,10 +36,10 @@ ReactDOM.render(
       <Route path="/login" component={login}/>
       <Route path="/" component={App}>
         <IndexRoute component = {BodyIndex} onEnter={requireAuth}/>
+        <Route path="/venues" component={Venues} onEnter={requireAuth}/>
         <Route path="/venue/new_venue" component={NewVenue} onEnter={requireAuth}/>
         <Route path="/new_requests" component={NewRequests} onEnter={requireAuth}/>
         <Route path="/requests" component={AllRequests} onEnter={requireAuth}/>
-        <Route path="/venues" component={Venues} onEnter={requireAuth}/>
         <Route path="/venues/:id" component={VenueDetails} onEnter={requireAuth}/>
       </Route>
     </Router>

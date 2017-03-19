@@ -38,8 +38,7 @@ export function fetchActivity(activity_name){
   }
 }
 
-module.exports = {
-    login: function(username, pass, cb) {
+export function login(username, pass, cb) {
         if (localStorage.token) {
             if (cb) cb(true)
             return
@@ -53,17 +52,17 @@ module.exports = {
                 if (cb) cb(false)
             }
         })
-    },
+    }
 
-    logout: function() {
+export function logout() {
         delete localStorage.token
-    },
+    }
 
-    loggedIn: function() {
+export function loggedIn(){
         return !!localStorage.token
-    },
+    }
 
-    getToken: function(username, pass, cb) {
+export function getToken(username, pass, cb) {
         $.ajax({
             type: 'POST',
             url: LOGIN_URL,
@@ -78,5 +77,4 @@ module.exports = {
                 })
             }
         })
-    },
-}
+    }
