@@ -4,8 +4,8 @@ const INITIAL_STATE = { requests:[]};
 
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
-    case FETCH_REQUESTS:
-      return {...state, requests: action.payload.data};
+    // case FETCH_REQUESTS:
+    //   return {...state, requests: action.payload.data};
 
 
     default:

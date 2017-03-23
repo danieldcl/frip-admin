@@ -229,6 +229,7 @@ class VenueDetails extends React.Component{
 
 
 function mapStateToProps(state){
+  console.log(state);
   return {
     venue: state.venues.venue
   };

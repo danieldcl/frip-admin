@@ -38,6 +38,7 @@ export function fetchActivity(activity_name){
   }
 }
 
+// functions below are not properly setted up
 export function login(username, pass, cb) {
         if (localStorage.token) {
             if (cb) cb(true)

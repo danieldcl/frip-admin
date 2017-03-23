@@ -82,6 +82,7 @@ Venues.propTypes = {
 }
 
 function mapStateToProps(state){
+  console.log(state);
   return {
     venues: state.venues.all
   };
