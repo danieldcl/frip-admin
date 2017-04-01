@@ -29,14 +29,6 @@ export function fetchVenue(id){
   }
 }
 
-export function fetchActivity(activity_name){
-  const url = `${GET_SINGLE_ACTIVITY_URL}${activity_name}`;
-  const request = axios.get(url);
-  return {
-    type : FETCH_ACTIVITY,
-    payload : request
-  }
-}
 
 // functions below are not properly setted up
 export function login(username, pass, cb) {
